@@ -1,0 +1,181 @@
+# Featured Projects
+
+# query {
+# 	featuredProjects(first: 12, featured:true) {
+#     data {
+#       id,
+#       title,
+#       sub_title,
+#       slug,
+#       thumbnail,
+#     }
+#   }
+# }
+
+# All Projects
+
+# query {
+# 	projects {
+#     data {
+#       id,
+#       title,
+#       sub_title,
+#       slug,
+#       thumbnail,
+#       summary,
+#       detail,
+#       images,
+#       categories {
+#           id,
+#         	name
+#       }
+#     }
+#   }
+# }
+
+# Get Single Project By Slug
+
+# query {
+#   project (slug: "branding-for-the-arab-youth-summit") {
+#       id,
+# 	    title,
+#     	categories {
+#         name
+#       }
+#   }
+# }
+
+# Get All Categories
+
+# query {
+#   categories {
+#     data {
+#       id,
+#       name
+#       projects {
+#         id,
+#         title
+#       }
+#     }
+#   }
+# }
+
+
+#Get Slides
+
+# query {
+#   slides {
+#     id,
+#     title,
+#     image,
+#     video
+#   }
+# }
+
+# Get Featured Campaings
+
+# query {
+# 	featuredCampaigns(first: 3, featured:true) {
+#     data {
+#       id,
+#       title,
+#       thumbnail,
+#       summary
+#     }
+#   }
+# }
+
+# Get ALl Campaings
+
+# query {
+# 	campaigns(first: 6) {
+#     data {
+#       id,
+#       title,
+#       thumbnail,
+#       detail
+#     }
+#   }
+# }
+
+# Get Single Campaign by slug
+
+# query {
+#   campaign (slug: "campaign-four") {
+#       id,
+# 	    title,
+#     	thumbnail,
+#     	detail,
+#     	images,
+#     	project {
+#         id,
+#         title
+#       }
+#   }
+# }
+
+#Get Featured Random Clients
+
+# query {
+#   featuredRandomClients{
+#     id,
+#     name,
+#     logo
+#   }
+# }
+
+
+# Get Featured clients
+
+# query {
+# 	featuredClients(featured:true) {
+#     data {
+#       id,
+#       name,
+#       logo
+#     }
+#   }
+# }
+
+# Get all clients
+
+# query {
+# 	clients {
+#       id,
+#       name,
+#       logo
+#   }
+# }
+
+#Get Featured Random Services
+
+# query {
+#   featuredRandomServices(num: 3){
+#     id,
+#     title,
+#     image
+#   }
+# }
+
+
+# Get Featured Services
+
+# query {
+# 	featuredServices(featured:true) {
+#     data {
+#       id,
+#       title,
+#       image
+#     }
+#   }
+# }
+
+# Get all Services
+
+# query {
+# 	services {
+#       id,
+#       title,
+#       image
+#   }
+# }
