@@ -23,7 +23,7 @@ class ContactController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
-            'bodyMessage' => "Body Message"
+            'bodyMessage' => $request->message
         );
 
 
