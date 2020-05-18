@@ -8,7 +8,7 @@ type Query {
     users: [User!]! @paginate(defaultCount: 10)
     user(id: ID @eq): User @find
 
-    projects(page: Int!): [Project] @paginate
+    projects(page: Int!, status: String @where(status: "like") ): [Project]  @paginate
     featuredProjects(featured: Boolean! @eq): [Project] @paginate(defaultCount: 12)
     project(slug: ID @eq): Project @find
     nextProject(id: ID @eq): Project
@@ -64,6 +64,7 @@ type Project {
     thumbnail: String
     images: String
     video: String
+    status: String
     featured: Boolean,
     categories: [Category] @belongsToMany
     campaigns: [Campaign] @hasMany
