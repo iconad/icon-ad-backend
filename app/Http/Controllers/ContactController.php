@@ -35,7 +35,7 @@ class ContactController extends Controller
 
         Mail::send('emails.success_email_to_icon', $data, function($message) use ($email, $name) {
             $message->from('info@icon-ad.com');
-            $message->to('amir@icon-ad.com', 'Icon Advertising LLC')->subject('New email from contact form');
+            $message->to('info@icon-ad.com', 'Icon Advertising LLC')->subject('New email from contact form');
         });
 
         // Mail::to($request->email)->send(new EmailToUser($data));
