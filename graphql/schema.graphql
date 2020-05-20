@@ -25,7 +25,7 @@ type Query {
     SlidesByOrder: [Slide]
     BackgroundVideo: [Slide]
 
-    clients: [Client] @all
+    clients(orderBy: [OrderByClause!] @orderBy): [Client] @all
     featuredClients(featured: Boolean! @eq): [Client] @paginate(defaultCount: 4)
     featuredRandomClients: [Client]
 

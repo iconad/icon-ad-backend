@@ -20,6 +20,6 @@ class FeaturedRandomClients
     {
         // return \App\Client::all()->random(5);
         //geting feautred clients
-        return \App\Client::where('featured', 1)->where('logo_white','!=',null)->random(5);
+        return \App\Client::all()->where('logo_white', '!=', null)->random(5);
     }
 }
