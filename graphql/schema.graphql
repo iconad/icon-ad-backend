@@ -8,7 +8,11 @@ type Query {
     users: [User!]! @paginate(defaultCount: 10)
     user(id: ID @eq): User @find
 
-    projects(page: Int!, status: String @where(status: "like") ): [Project]  @paginate
+    # projects(page: Int!, status: String @where(status: "like") ): [Project]  @paginate
+    # projects(page: Int, status: String @eq orderBy: [OrderByClause!] @orderBy): [Project!]! @paginate(type: "paginator" model: "App\\Project")
+    projects(page: Int, status: String @eq orderBy: [OrderByClause!] @orderBy): [Project!]! @where(status: "like") @paginate(type: "paginator" model: "App\\Project")
+
+    # GetAllProjects: [Project]
     featuredProjects(featured: Boolean! @eq): [Project] @paginate(defaultCount: 12)
     project(slug: ID @eq): Project @find
     nextProject(id: ID @eq): Project

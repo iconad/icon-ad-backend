@@ -241,13 +241,6 @@
 <tbody>
 <tr>
 <td style="padding: 25px; text-align: center;" align="center">
-<table width="100%" cellspacing="0" cellpadding="0" bgcolor="#E5E5E5">
-<tbody>
-<tr>
-<td class="center footer" style="font-size: 12px;"><a href="icon-ad.com/contact" target="_blank" rel="noopener">Contact Us</a>&nbsp;&nbsp;|&nbsp;&nbsp; <span class="footer-group"> <a href="#">Facebook</a>&nbsp;&nbsp;|&nbsp;&nbsp; <a href="#">Twitter</a>&nbsp;&nbsp;|&nbsp;&nbsp; <a href="#">Support</a> </span></td>
-</tr>
-</tbody>
-</table>
 </td>
 </tr>
 </tbody>
