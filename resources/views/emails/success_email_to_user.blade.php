@@ -208,7 +208,7 @@
 <td style="text-align: center; font-size: 30px; padding-bottom: 20px;">Your email has been received!</td>
 </tr>
 <tr>
-<td style="padding-bottom: 20px;">Hell {{$name}}, <br /><br /> {{$bodyMessage}}  <br /><br /></td>
+<td style="padding-bottom: 20px;">Hell {{$name}}, <br /> Your message <br />  {{$bodyMessage}}  <br /><br /></td>
 </tr>
 </tbody>
 </table>

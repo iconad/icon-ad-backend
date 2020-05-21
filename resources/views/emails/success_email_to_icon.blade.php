@@ -216,6 +216,10 @@
     <td style="padding-bottom: 20px;">{{$email}}</td>
 </tr>
 <tr>
+    <td style="padding-bottom: 20px;">Country</td>
+    <td style="padding-bottom: 20px;">{{$country}}</td>
+</tr>
+<tr>
     <td style="padding-bottom: 20px;">Phone</td>
     <td style="padding-bottom: 20px;">{{$phone}}</td>
 </tr>

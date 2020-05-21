@@ -22,6 +22,7 @@ class ContactController extends Controller
         $data = array(
             'name' => $request->name,
             'email' => $request->email,
+            'country' => $request->country,
             'phone' => $request->phone,
             'bodyMessage' => $request->message
         );
