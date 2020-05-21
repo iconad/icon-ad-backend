@@ -13,7 +13,7 @@ type Query {
     projects(page: Int, status: String @eq orderBy: [OrderByClause!] @orderBy): [Project!]! @where(status: "like") @paginate(type: "paginator" model: "App\\Project")
 
     # GetAllProjects: [Project]
-    featuredProjects(featured: Boolean! @eq): [Project] @paginate(defaultCount: 12)
+    featuredProjects(featured: Boolean! @eq orderBy: [OrderByClause!] @orderBy): [Project] @paginate(defaultCount: 12)
     project(slug: ID @eq): Project @find
     nextProject(id: ID @eq): Project
     prevProject(id: ID @eq): Project
@@ -69,6 +69,7 @@ type Project {
     images: String
     video: String
     status: String
+    order: Boolean
     featured: Boolean,
     categories: [Category] @belongsToMany
     campaigns: [Campaign] @hasMany
