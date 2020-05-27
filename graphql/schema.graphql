@@ -17,6 +17,7 @@ type Query {
     project(slug: ID @eq): Project @find
     nextProject(id: ID @eq): Project
     prevProject(id: ID @eq): Project
+    featuredCasestudies: [Project!]!
 
     categories: [Category] @all
     category(slug: ID @eq): Category @find
@@ -70,6 +71,7 @@ type Project {
     video: String
     status: String
     order: Boolean
+    casestudy: Boolean
     featured: Boolean,
     categories: [Category] @belongsToMany
     campaigns: [Campaign] @hasMany
