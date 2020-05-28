@@ -70,6 +70,7 @@ type Project {
     images: String
     video: String
     status: String
+    location: String
     order: Boolean
     casestudy: Boolean
     featured: Boolean,
