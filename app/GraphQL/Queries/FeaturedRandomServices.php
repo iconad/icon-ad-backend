@@ -18,6 +18,6 @@ class FeaturedRandomServices
      */
     public function __invoke($rootValue, array $args, GraphQLContext $context, ResolveInfo $resolveInfo)
     {
-        return \App\Service::all()->random($args['num']);
+        return \App\Category::all()->random($args['num']);
     }
 }

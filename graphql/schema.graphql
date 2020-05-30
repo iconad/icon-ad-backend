@@ -34,10 +34,10 @@ type Query {
     featuredCampaigns(featured: Boolean! @eq): [Campaign] @paginate(defaultCount: 3)
     campaign(slug: ID @eq): Campaign @find
 
-    services: [Service] @all
-    featuredServices(featured: Boolean! @eq): [Service] @paginate(defaultCount: 8)
-    featuredRandomServices(num: Int): [Service]
-    service(slug: ID @eq): Service @find
+    services: [Category] @all
+    featuredServices(featured: Boolean! @eq): [Category] @paginate(defaultCount: 8)
+    featuredRandomServices(num: Int): [Category]
+    service(slug: ID @eq): Category @find
 
 
 }
@@ -82,7 +82,12 @@ type Project {
 type Category {
     id: ID!
     name: String
+    short_name: String
     slug: String!
+    summary: String!
+    detail: String
+    image: String
+    featured: Boolean
     projects: [Project] @belongsToMany
 }
 
