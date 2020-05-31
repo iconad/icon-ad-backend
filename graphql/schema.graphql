@@ -73,7 +73,7 @@ type Project {
     video: String
     status: String
     location: String
-    order: Boolean
+    order: Int
     casestudy: Boolean
     featured: Boolean,
     categories: [Category] @belongsToMany
