@@ -68,6 +68,7 @@ type Project {
     cover_text: String
     detail: String
     thumbnail: String
+    cover: String
     images: String
     video: String
     status: String
