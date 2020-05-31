@@ -17,7 +17,7 @@ class Project extends Model
     }
 
     public static function PrevProject ($id) {
-        return static::where('id', '<', $id)->where('status', 'PUBLISHED')->orderBy('order','desc')->first();
+        return static::where('id', '<', $id)->where('status', 'PUBLISHED')->orderBy('order','asc')->first();
     }
 
     public function client () {
