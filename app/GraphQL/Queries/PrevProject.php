@@ -18,6 +18,6 @@ class PrevProject
      */
     public function __invoke($rootValue, array $args, GraphQLContext $context, ResolveInfo $resolveInfo)
     {
-        return \App\Project::prevProject($args['id']);
+        return \App\Project::orderBy('order', 'asc')->prevProject($args['id']);
     }
 }
