@@ -90,6 +90,7 @@ type Category {
     detail: String
     image: String
     featured: Boolean
+   seo_title: String
     projects: [Project] @belongsToMany
 }
 
