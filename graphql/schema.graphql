@@ -1,5 +1,6 @@
 "A datetime string with format `Y-m-d H:i:s`, e.g. `2018-01-01 13:00:00`."
-scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
+scalar DateTime
+@scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
 
 "A date string with format `Y-m-d`, e.g. `2011-05-23`."
 scalar Date @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date")
@@ -10,10 +11,19 @@ type Query {
 
     # projects(page: Int!, status: String @where(status: "like") ): [Project]  @paginate
     # projects(page: Int, status: String @eq orderBy: [OrderByClause!] @orderBy): [Project!]! @paginate(type: "paginator" model: "App\\Project")
-    projects(page: Int, status: String @eq orderBy: [OrderByClause!] @orderBy): [Project!]! @where(status: "like") @paginate(type: "paginator" model: "App\\Project")
+    projects(
+        page: Int
+        status: String @eq
+        orderBy: [OrderByClause!] @orderBy
+    ): [Project!]!
+    @where(status: "like")
+    @paginate(type: "paginator", model: "App\\Project")
 
     # GetAllProjects: [Project]
-    featuredProjects(featured: Boolean! @eq orderBy: [OrderByClause!] @orderBy): [Project] @paginate(defaultCount: 12)
+    featuredProjects(
+        featured: Boolean! @eq
+        orderBy: [OrderByClause!] @orderBy
+    ): [Project] @paginate(defaultCount: 12)
     project(slug: ID @eq): Project @find
     nextProject(id: ID @eq): Project
     prevProject(id: ID @eq): Project
@@ -31,15 +41,15 @@ type Query {
     featuredRandomClients: [Client]
 
     campaigns: [Campaign] @paginate(defaultCount: 6)
-    featuredCampaigns(featured: Boolean! @eq): [Campaign] @paginate(defaultCount: 3)
+    featuredCampaigns(featured: Boolean! @eq): [Campaign]
+    @paginate(defaultCount: 3)
     campaign(slug: ID @eq): Campaign @find
 
     services: [Category] @all
-    featuredServices(featured: Boolean! @eq): [Category] @paginate(defaultCount: 8)
+    featuredServices(featured: Boolean! @eq): [Category]
+    @paginate(defaultCount: 8)
     featuredRandomServices(num: Int): [Category]
     service(slug: ID @eq): Category @find
-
-
 }
 
 type Contact {
@@ -58,7 +68,6 @@ type User {
     updated_at: DateTime!
 }
 
-
 type Project {
     id: ID!
     title: String!
@@ -75,7 +84,8 @@ type Project {
     location: String
     order: Int
     casestudy: Boolean
-    featured: Boolean,
+    featured: Boolean
+    block_size: Boolean
     categories: [Category] @belongsToMany
     campaigns: [Campaign] @hasMany
     client: Client @hasOne
@@ -90,7 +100,7 @@ type Category {
     detail: String
     image: String
     featured: Boolean
-   seo_title: String
+    seo_title: String
     projects: [Project] @belongsToMany
 }
 
@@ -113,7 +123,7 @@ type Campaign {
     video: String
     thumbnail: String
     images: String
-    featured: Boolean,
+    featured: Boolean
     project: Project @hasOne
 }
 
@@ -123,9 +133,8 @@ type Client {
     slug: String!
     logo: String
     logo_white: String
-    featured: Boolean,
+    featured: Boolean
 }
-
 
 type Service {
     id: ID!
@@ -135,15 +144,13 @@ type Service {
     detail: String
     image: String
     seo_title: String
-    featured: Boolean,
+    featured: Boolean
 }
 
-
-input OrderByClause{
+input OrderByClause {
     field: String!
     order: SortOrder!
 }
-
 
 enum SortOrder {
     ASC
