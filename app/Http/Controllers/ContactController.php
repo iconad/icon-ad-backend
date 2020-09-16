@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
-    public function index (Request $request) {
+    public function index(Request $request)
+    {
 
         $this->validate(request(), [
             'name' => 'required',
@@ -28,13 +29,14 @@ class ContactController extends Controller
         );
 
 
-        Mail::send('emails.success_email_to_user', $data, function($message) use ($email, $name) {
+        Mail::send('emails.success_email_to_user', $data, function ($message) use ($email, $name) {
             $message->from('info@icon-ad.com');
+            $message->bcc("chris.r@icon-ad.com");
             $message->to($email, $name)->subject('Thank you for contacting Icon Adverting LLC.');
         });
 
 
-        Mail::send('emails.success_email_to_icon', $data, function($message) use ($email, $name) {
+        Mail::send('emails.success_email_to_icon', $data, function ($message) use ($email, $name) {
             $message->from('info@icon-ad.com');
             $message->to('info@icon-ad.com', 'Icon Advertising LLC')->subject('New email from contact form');
         });
@@ -47,14 +49,12 @@ class ContactController extends Controller
                     "success" => "Something wrong please try again"
                 ]
             );
-        }else{
+        } else {
             return response()->json(
                 [
                     "success" => "success"
                 ]
             );
         }
-
-
     }
 }
