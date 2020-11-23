@@ -80,6 +80,7 @@ type Project {
     cover: String
     images: String
     video: String
+    video2: String
     status: String
     location: String
     order: Int
