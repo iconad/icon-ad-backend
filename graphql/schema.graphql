@@ -71,6 +71,7 @@ type User {
 type Project {
     id: ID!
     title: String!
+    title_case: String
     slug: String!
     sub_title: String
     summary: String
