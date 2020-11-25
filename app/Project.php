@@ -28,4 +28,8 @@ class Project extends Model
         return $this->hasMany(Campaign::class);
     }
 
+    public function assets () {
+        return $this->hasMany(Asset::class);
+    }
+
 }

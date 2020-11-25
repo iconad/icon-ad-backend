@@ -9,8 +9,6 @@ type Query {
     users: [User!]! @paginate(defaultCount: 10)
     user(id: ID @eq): User @find
 
-    # projects(page: Int!, status: String @where(status: "like") ): [Project]  @paginate
-    # projects(page: Int, status: String @eq orderBy: [OrderByClause!] @orderBy): [Project!]! @paginate(type: "paginator" model: "App\\Project")
     projects(
         page: Int
         status: String @eq
@@ -19,7 +17,6 @@ type Query {
     @where(status: "like")
     @paginate(type: "paginator", model: "App\\Project")
 
-    # GetAllProjects: [Project]
     featuredProjects(
         featured: Boolean! @eq
         orderBy: [OrderByClause!] @orderBy
@@ -37,10 +34,15 @@ type Query {
     BackgroundVideo: [Slide]
 
     clients(orderBy: [OrderByClause!] @orderBy): [Client] @all
+    # assets(orderBy: [OrderByClause!] @orderBy): [Asset] @all
+    AssetsByProjects(project_id: Int): [Asset!]!
+
+
     featuredClients(featured: Boolean! @eq): [Client] @paginate(defaultCount: 4)
     featuredRandomClients: [Client]
 
     campaigns: [Campaign] @paginate(defaultCount: 6)
+
     featuredCampaigns(featured: Boolean! @eq): [Campaign]
     @paginate(defaultCount: 3)
     campaign(slug: ID @eq): Campaign @find
@@ -90,6 +92,7 @@ type Project {
     block_size: Boolean
     categories: [Category] @belongsToMany
     campaigns: [Campaign] @hasMany
+    assets: [Asset] @hasMany
     client: Client @hasOne
 }
 
@@ -147,6 +150,18 @@ type Service {
     image: String
     seo_title: String
     featured: Boolean
+}
+
+type Asset {
+    id: ID!
+    body: String
+    video: String
+    image: String
+    col: Int
+    row: Int
+    autoplay: Int
+    type: String
+    status: String
 }
 
 input OrderByClause {
