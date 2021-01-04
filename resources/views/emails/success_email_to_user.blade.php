@@ -203,14 +203,31 @@
 <tr>
 <td class="body-padding mobile-padding">
 <table width="100%" cellspacing="0" cellpadding="0">
-<tbody>
-<tr>
-<td style="text-align: center; font-size: 30px; padding-bottom: 20px;">Your email has been received!</td>
-</tr>
-<tr>
-<td style="padding-bottom: 20px;">Hell {{$name}}, <br /> Your message <br />  {{$bodyMessage}}  <br /><br /></td>
-</tr>
-</tbody>
+    <tbody>
+        <tr>
+        <td style="text-align: center; font-size: 30px; padding-bottom: 20px;">Dear {{$name}}, We've received your inquiry request, and someone from our team will be in touch soon.</td>
+        </tr>
+        <tr>
+            <td style="padding-bottom: 20px;">Name</td>
+            <td style="padding-bottom: 20px;">{{$name}}</td>
+        </tr>
+        <tr>
+            <td style="padding-bottom: 20px;">Email</td>
+            <td style="padding-bottom: 20px;">{{$email}}</td>
+        </tr>
+        <tr>
+            <td style="padding-bottom: 20px;">Country</td>
+            <td style="padding-bottom: 20px;">{{$country}}</td>
+        </tr>
+        <tr>
+            <td style="padding-bottom: 20px;">Phone</td>
+            <td style="padding-bottom: 20px;">{{$phone}}</td>
+        </tr>
+        <tr>
+            <td style="padding-bottom: 20px;">message</td>
+            <td style="padding-bottom: 20px;">{{$bodyMessage}}</td>
+        </tr>
+        </tbody>
 </table>
 <table width="100%" cellspacing="0" cellpadding="0">
 <tbody>
