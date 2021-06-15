@@ -31,7 +31,7 @@ type Query {
 
     slides: [Slide] @all
     SlidesByOrder: [Slide]
-    BackgroundVideo: [Slide]
+    BackgroundVideo: [Slide] @where(status: "like")
 
     clients(orderBy: [OrderByClause!] @orderBy): [Client] @all
     # assets(orderBy: [OrderByClause!] @orderBy): [Asset] @all
@@ -86,6 +86,8 @@ type Project {
     video2: String
     status: String
     location: String
+    seo_title: String
+    seo_description: String
     order: Int
     casestudy: Boolean
     featured: Boolean
@@ -106,6 +108,7 @@ type Category {
     image: String
     featured: Boolean
     seo_title: String
+    seo_description: String
     projects: [Project] @belongsToMany
 }
 
