@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ResumeMailToIcon;
+use App\Mail\ResumeMailToUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use App\TeamApplication;
 
 class ContactController extends Controller
 {
@@ -56,5 +59,70 @@ class ContactController extends Controller
                 ]
             );
         }
+    }
+
+
+    public function joinOurTeam (Request $request) {
+
+
+        if ($request->hasFile('file')) {
+
+            $file = $request->file('file');
+            $fname = 'resume/' . uniqid() . '.' . $file->extension();
+            $extenstion = $file->extension();
+            $file->storePubliclyAs('public', $fname);
+            $data['file'] = $fname;
+
+            $email =  $request->email;
+
+            $data = array(
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'role' => $request->role,
+                'nationality' => $request->nationality,
+                'resident_country' => $request->resident_country,
+                'about' => $request->about
+            );
+
+            $team = TeamApplication::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'nationality' => $request->nationality,
+                'resident_country' => $request->resident_country,
+                'role' => $request->role,
+                'resume' => $fname,
+                'about' => $request->about
+            ]);
+
+            $input = array(
+                'data'     => $data,
+                'path'     => $fname,
+                'extenstion'     => $extenstion
+            );
+
+            if($team){
+                Mail::to($email)->send(new ResumeMailToUser($data));
+                Mail::to('info@icon-ad.com')->send(new ResumeMailToIcon($input));
+            }
+
+        }else{
+            return "Resume field is requred";
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

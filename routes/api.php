@@ -22,3 +22,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/sitemap', 'UtilsController@siteMap');
 Route::post('/contact', 'ContactController@index');
+Route::post('/join-our-team-apply', 'ContactController@joinOurTeam');
+

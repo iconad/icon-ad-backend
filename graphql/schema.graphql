@@ -9,6 +9,16 @@ type Query {
     users: [User!]! @paginate(defaultCount: 10)
     user(id: ID @eq): User @find
 
+    blogs (
+        page: Int
+        status: String @eq
+        orderBy: [OrderByClause!] @orderBy
+    ): [Blog!]!
+
+    @where(status: "like")
+    @paginate(type: "paginator", model: "App\\Blog")
+    blog(slug: ID @eq): Blog @find
+
     projects(
         page: Int
         status: String @eq
@@ -25,6 +35,7 @@ type Query {
     nextProject(id: ID @eq): Project
     prevProject(id: ID @eq): Project
     featuredCasestudies: [Project!]!
+    sliderProjects: [Project!]!
 
     categories: [Category] @all
     category(slug: ID @eq): Category @find
@@ -38,12 +49,13 @@ type Query {
     AssetsByProjects(project_id: Int): [Asset!]!
 
 
-    featuredClients(featured: Boolean! @eq): [Client] @paginate(defaultCount: 4)
+    featuredClients(featured: Boolean! @eq): [Client] @paginate(defaultCount: 12)
     featuredRandomClients: [Client]
 
     campaigns: [Campaign] @paginate(defaultCount: 6)
 
     featuredCampaigns(featured: Boolean! @eq): [Campaign]
+
     @paginate(defaultCount: 3)
     campaign(slug: ID @eq): Campaign @find
 
@@ -68,6 +80,22 @@ type User {
     email: String!
     created_at: DateTime!
     updated_at: DateTime!
+}
+
+type Blog {
+    id: ID!
+    title: String!
+    slug: String!
+    summary: String!
+    detail: String
+    image: String
+    seo_title: String
+    meta_description: String
+    meta_keywords: String
+    status: String
+    featured: Boolean
+    order: Int
+    created_at: String
 }
 
 type Project {

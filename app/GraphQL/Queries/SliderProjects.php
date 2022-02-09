@@ -5,7 +5,7 @@ namespace App\GraphQL\Queries;
 use GraphQL\Type\Definition\ResolveInfo;
 use Nuwave\Lighthouse\Support\Contracts\GraphQLContext;
 
-class FeaturedRandomClients
+class SliderProjects
 {
     /**
      * Return a value for the field.
@@ -18,8 +18,6 @@ class FeaturedRandomClients
      */
     public function __invoke($rootValue, array $args, GraphQLContext $context, ResolveInfo $resolveInfo)
     {
-        // return \App\Client::all()->random(5);
-        //geting feautred clients
-        return \App\Client::all()->where('logo_white', '!=', null)->random(12);
+        return \App\Project::orderBy('order', 'asc')->where('slider', 1)->where('status', 'PUBLISHED')->get();
     }
 }
