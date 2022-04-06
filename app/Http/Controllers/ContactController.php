@@ -104,7 +104,7 @@ class ContactController extends Controller
 
             if($team){
                 Mail::to($email)->send(new ResumeMailToUser($data));
-                Mail::to('info@icon-ad.com')->send(new ResumeMailToIcon($input));
+                Mail::to('hr@icon-ad.com')->send(new ResumeMailToIcon($input));
             }
 
         }else{
