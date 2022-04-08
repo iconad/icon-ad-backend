@@ -110,6 +110,7 @@ type Project {
     thumbnail: String
     cover: String
     images: String
+    image_alt: String
     video: String
     video2: String
     status: String
